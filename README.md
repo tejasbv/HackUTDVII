@@ -1,2 +1,2 @@
 # HackUTDVII
-Projects from KackUTDVII
+Projects from HackUTDVII
