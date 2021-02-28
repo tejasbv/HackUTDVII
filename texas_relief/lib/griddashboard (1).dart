@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:texas_relief/hotlineView.dart';
 import 'package:texas_relief/news.dart';
 
 class GridDashboard extends StatelessWidget {
@@ -22,8 +23,8 @@ class GridDashboard extends StatelessWidget {
     img: "assets/images/map.png",
   );
   Items item4 = new Items(
-    title: "Medical Grants",
-    subtitle: "Rose favirited your Post",
+    title: "Donate",
+    subtitle: "Help!",
     event: "",
     img: "assets/images/festival.png",
   );
@@ -56,7 +57,7 @@ class GridDashboard extends StatelessWidget {
     double height3 = (height - kToolbarHeight) / 2;
     double boxw = height > width ? width : height - 50;
     /**********************************************************/
-    List<Items> myList = [item1, item2, item3, item4, item5, item6, item7];
+    List<Items> myList = [item5, item7, item1, item6, item2, item3, item4];
     var color = Colors.blue[600];
     return Flexible(
       child: Container(
@@ -110,7 +111,11 @@ class GridDashboard extends StatelessWidget {
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       TaxRelief()))
-                                          : null;
+                                          : Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      HotlineView()));
                 },
                 child: Container(
                   width: width / 2,
