@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:texas_relief/LoginPage.dart';
 import 'package:texas_relief/Survey/quiz.dart';
+import 'package:texas_relief/Survey/result.dart';
 import 'package:texas_relief/main.dart';
 
 class Survey extends StatefulWidget {
@@ -11,30 +12,47 @@ class Survey extends StatefulWidget {
 class _SurveyState extends State<Survey> {
   final _questions = [
     {
-      "QuestionText": "what is your favorite color?",
+      "QuestionText": "Are you in need of immediate assistance?",
       "answers": [
-        {"text": "red", "score": 10},
-        {"text": "green", "score": 6},
-        {"text": "black", "score": 20},
-        {"text": "white", "score": 1}
+        {"text": "Medical", "score": 10},
+        {"text": "Shelter ", "score": 6},
+        {"text": "Food/Water", "score": 20},
+        {"text": "N/A", "score": 1}
       ]
     },
     {
       "QuestionText": "What is your favorite animal?",
       "answers": [
-        {"text": "dog", "score": 1},
-        {"text": "cat", "score": 5},
-        {"text": "alien", "score": 7},
-        {"text": "human", "score": 10}
+        {"text": "First Time Homeowner", "score": 1},
+        {"text": "Veteran Homeowner", "score": 5},
+        {"text": "Multiple Homeowner", "score": 7},
+        {"text": "Renter", "score": 10},
+        {"text": "Homeless", "score": 10}
       ]
     },
     {
-      "QuestionText": "what is your favorite fruit?",
+      "QuestionText": "Are you an owner of a small business?",
       "answers": [
-        {"text": "tomato", "score": 10},
-        {"text": "apple", "score": 6},
-        {"text": "blue berry", "score": 5},
-        {"text": "banana", "score": 1}
+        {"text": "Yes ", "score": 10},
+        {"text": "No", "score": 6},
+      ]
+    },
+    {
+      "QuestionText":
+          "If replied Yes to the previous question, are you in need of a grant/loan?",
+      "answers": [
+        {"text": "Grant for Repairs", "score": 1},
+        {"text": "Economic Distress", "score": 5},
+        {"text": "Disaster Relief ", "score": 7},
+        {"text": "N/A", "score": 10},
+      ]
+    },
+    {
+      "QuestionText":
+          "Are you, or your family member in need of financial assistance for medical bills?",
+      "answers": [
+        {"text": "Yes ", "score": 10},
+        {"text": "No", "score": 6},
       ]
     },
   ];
@@ -63,25 +81,28 @@ class _SurveyState extends State<Survey> {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Color(0xFF0652C5), Colors.lightGreen[300]])),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Question ${questionIndex + 1} of ${_questions.length}",
-                  style: TextStyle(fontSize: 36, color: Colors.cyan[200]),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                Quiz(_answerQuestion, _questions, questionIndex)
-              ],
-            )),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFF0652C5), Colors.lightGreen[300]])),
+          child: questionIndex < _questions.length
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Question ${questionIndex + 1} of ${_questions.length}",
+                      style: TextStyle(fontSize: 36, color: Colors.cyan[200]),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Quiz(_answerQuestion, _questions, questionIndex)
+                  ],
+                )
+              : Result(),
+        ),
         backgroundColor: Colors.teal,
       ),
     );

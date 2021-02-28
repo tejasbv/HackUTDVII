@@ -1,50 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:texas_relief/Help.dart';
+import 'package:texas_relief/House.dart';
+import 'package:texas_relief/Survey/survey.dart';
+import 'package:texas_relief/Tax.dart';
+import 'package:texas_relief/Unemployed.dart';
 import 'package:texas_relief/hotlineView.dart';
+import 'package:texas_relief/immediateneeds.dart';
 import 'package:texas_relief/news.dart';
 
 class GridDashboard extends StatelessWidget {
   Items item1 = new Items(
       title: "News",
-      subtitle: "Fire in PLano",
-      event: "4 new",
+      subtitle: "Fire in Plano",
+      event: "3 new",
       img: "assets/images/calendar.png");
 
   Items item2 = new Items(
     title: "Home Grants",
-    subtitle: "Bocali, Apple",
+    subtitle: "affordable housing",
     event: "4 Items",
     img: "assets/images/food.png",
   );
   Items item3 = new Items(
-    title: "Business Grants",
-    subtitle: "Lucy Mao going to Office",
+    title: "Unemployment Help",
+    subtitle: "get employed",
     event: "",
     img: "assets/images/map.png",
   );
   Items item4 = new Items(
     title: "Donate",
-    subtitle: "Help!",
+    subtitle: "Karma",
     event: "",
     img: "assets/images/festival.png",
   );
   Items item5 = new Items(
     title: "Immediate Needs",
-    subtitle: "Homework, Design",
+    subtitle: "Food, shelter, clothing",
     event: "4 Items",
     img: "assets/images/todo.png",
   );
   Items item6 = new Items(
     title: "Tax Relief",
-    subtitle: "",
+    subtitle: "Tax incentives",
     event: "2 Items",
     img: "assets/images/setting.png",
   );
   Items item7 = new Items(
       title: "Hotline",
-      subtitle: "Important contacts",
+      subtitle: "emergency numbers",
       event: "1 new",
       img: "assets/images/phone.png");
+  Items item8 = new Items(
+      title: "Survey",
+      subtitle: "Personalize",
+      event: "",
+      img: "assets/images/survey.png");
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +68,16 @@ class GridDashboard extends StatelessWidget {
     double height3 = (height - kToolbarHeight) / 2;
     double boxw = height > width ? width : height - 50;
     /**********************************************************/
-    List<Items> myList = [item5, item7, item1, item6, item2, item3, item4];
+    List<Items> myList = [
+      item5,
+      item7,
+      item1,
+      item6,
+      item2,
+      item3,
+      item4,
+      item8
+    ];
     var color = Colors.blue[600];
     return Flexible(
       child: Container(
@@ -84,21 +104,18 @@ class GridDashboard extends StatelessWidget {
                       ? Navigator.push(context,
                           MaterialPageRoute(builder: (context) => NewsView()))
                       : data.title == "Home Grants"
-                          ? Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomeGrants()))
-                          : data.title == "Business Grants"
+                          ? Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => House()))
+                          : data.title == "Unemployment Help"
                               ? Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => BusinessGrants()))
-                              : data.title == "Medical Grants"
+                                      builder: (context) => Unemployed()))
+                              : data.title == "Donate"
                                   ? Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              MedicalGrants()))
+                                          builder: (context) => Help()))
                                   : data.title == "Immediate Needs"
                                       ? Navigator.push(
                                           context,
@@ -109,13 +126,18 @@ class GridDashboard extends StatelessWidget {
                                           ? Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      TaxRelief()))
-                                          : Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      HotlineView()));
+                                                  builder: (context) => Tax()))
+                                          : data.title == "Survey"
+                                              ? Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Survey()))
+                                              : Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          HotlineView()));
                 },
                 child: Container(
                   width: width / 2,
@@ -210,14 +232,6 @@ class BusinessGrants extends StatelessWidget {
 }
 
 class MedicalGrants extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-}
-
-class ImmediateNeeds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
