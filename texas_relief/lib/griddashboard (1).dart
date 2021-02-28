@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:texas_relief/news.dart';
 
 class GridDashboard extends StatelessWidget {
   Items item1 = new Items(
@@ -38,6 +39,11 @@ class GridDashboard extends StatelessWidget {
     event: "2 Items",
     img: "assets/images/setting.png",
   );
+  Items item7 = new Items(
+      title: "Hotline",
+      subtitle: "Important contacts",
+      event: "1 new",
+      img: "assets/images/phone.png");
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +56,7 @@ class GridDashboard extends StatelessWidget {
     double height3 = (height - kToolbarHeight) / 2;
     double boxw = height > width ? width : height - 50;
     /**********************************************************/
-    List<Items> myList = [item1, item2, item3, item4, item5, item6];
+    List<Items> myList = [item1, item2, item3, item4, item5, item6, item7];
     var color = Colors.blue[600];
     return Flexible(
       child: Container(
@@ -75,7 +81,7 @@ class GridDashboard extends StatelessWidget {
                 onPressed: () {
                   data.title == "News"
                       ? Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Deadlines()))
+                          MaterialPageRoute(builder: (context) => NewsView()))
                       : data.title == "Home Grants"
                           ? Navigator.push(
                               context,

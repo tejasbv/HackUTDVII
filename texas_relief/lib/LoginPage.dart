@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:texas_relief/authentication_service.dart';
 import 'package:provider/provider.dart';
 import 'package:texas_relief/signUpPage.dart';
+
+import 'Survey/survey.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,6 +16,7 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends State<LoginPage> {
   String email, password;
+
   bool login = true;
   @override
   Widget build(BuildContext context) {

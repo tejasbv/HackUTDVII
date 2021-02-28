@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:texas_relief/LoginPage.dart';
+import 'package:texas_relief/Survey/survey.dart';
 import 'package:texas_relief/authentication_service.dart';
 import 'package:texas_relief/homeUI.dart';
 import 'package:texas_relief/signUpPage.dart';
@@ -13,7 +14,7 @@ import 'package:texas_relief/signUpPage.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  SystemChrome.setEnabledSystemUIOverlays([]);
+  // SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
 
