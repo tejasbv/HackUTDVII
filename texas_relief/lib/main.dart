@@ -3,15 +3,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:texas_relief/LoginPage.dart';
 import 'package:texas_relief/authentication_service.dart';
+import 'package:texas_relief/homeUI.dart';
 import 'package:texas_relief/signUpPage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
+  SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
 
@@ -47,11 +49,7 @@ class AuthenticationWrapper extends StatelessWidget {
     final firbaseuUser = context.watch<User>();
 
     if (firbaseuUser != null) {
-      return TextButton(
-          onPressed: () {
-            context.read<AuthenticationService>().signOut();
-          },
-          child: Text("Sign out"));
+      return HomeState();
     }
     return LoginPage();
     // return LoginPage();
